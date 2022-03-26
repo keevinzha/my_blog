@@ -8,6 +8,12 @@ from .forms import ArticlePostForm
 import markdown
 # Create your views here.
 
+
+def article_delete(request, id):
+    article = ArticlePost.objects.get(id=id)
+    article.delete()
+    return redirect("article:article_list")
+
 def article_create(request):
     if request.method == "POST":
         # 将网页提交的数据赋值到表单实例
